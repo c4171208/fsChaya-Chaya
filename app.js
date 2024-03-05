@@ -1,8 +1,10 @@
-// import {config} from "dotenv"
+import {config} from "dotenv"
+import express  from "express";
+
 import userRouter from "./router/user.js"
 import cors from "cors";
 
-// config();
+ config();
 const app=express()
 
 
@@ -17,6 +19,7 @@ const PORT=process.env.PORT||1000
     app.listen(PORT,()=>{
         console.log(`server running on port ${PORT}`);
     })
+
 
 
 

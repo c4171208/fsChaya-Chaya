@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
-import { User, userValidatorForLogin, userValidatorForSign } from "../models/user.js";
+
+ import mongoose from "mongoose";
+import { User, userValidatorAddUser,userValidatorUpDateUser } from "../models/user.js";
 
 export const addUser = async (req, res) => {
 
-    let { name, email, phone } = req.body;
-    let validate = userValidatorForSign(req.body);
-
+    let { name, email,phone } = req.body;
+    let validate = userValidatorAddUser(req.body);
     if (validate.error)
         return res.status(404).json({ type: "not valid data ", message: validate.error.details[0].message });
 
@@ -37,15 +37,6 @@ export const getAllUsers = async (req, res) => {
 
     }
 }
-
-
-export const user = await User.findById(_id);
-if (!user) {
-    return res
-        .status(400)
-        .json({ error: true, message: "no user found", data: null });
-}
-
 
 export const deleteUser = async (req, res) => {
     const { _id } = req.body;
@@ -91,7 +82,6 @@ export const updateUser = async (req, res) => {
         if (!user) {
             return res
                 .status(400)
-            // .json({ error: true, message: "no user found", data: null });
             json("no user found")
         }
 
@@ -127,4 +117,4 @@ export const findUserById = async (req, res) => {
 
     }
 
-}
+};

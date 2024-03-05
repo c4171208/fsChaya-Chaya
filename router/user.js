@@ -1,5 +1,7 @@
 import express from "express";
-import { addUser,login ,getAllUsers,deleteUser,updateUser,findUserById} from "../controlers/user.js";
+
+import { addUser ,getAllUsers,deleteUser,updateUser,findUserById} from "../controlers/user.js";
+
 
 const router = express.Router();
 router.delete("/",deleteUser)
