@@ -1,4 +1,6 @@
 // import {config} from "dotenv"
+import express  from "express";
+
 import userRouter from "./router/user.js"
 import cors from "cors";
 

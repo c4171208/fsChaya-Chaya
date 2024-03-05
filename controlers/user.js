@@ -1,9 +1,9 @@
-import { User, userValidatorForLogin, userValidatorForSign } from "../models/user.js";
+import { User, userValidatorAddUser,userValidatorUpDateUser } from "../models/user.js";
 
 export const addUser = async (req, res) => {
 
     let { name, email,phone } = req.body;
-    let validate = userValidatorForSign(req.body);
+    let validate = userValidatorAddUser(req.body);
 
     if (validate.error)
         return res.status(404).json({ type: "not valid data ", message: validate.error.details[0].message });
@@ -37,25 +37,8 @@ export const getAllUsers = async (req, res) => {
     }
 }
 
-export const login = async (req, res) => {
 
-    let validate = userValidatorForLogin(req.body);
-    let { name, email } = req.body;
 
-    if (validate.error)
-        return res.status(404).json({ type: "not valid in login", message: validate.error.details[0].message })
-    try {
-        let user = await User.findOne({ name })
-        if (!user)
-            return res.status(400).send({ type: "please sigh in!", message: err.message })
-       
-        return res.json({ _id: user._id, email:user.email, name});
-    }
-    catch (err) {
 
-        return res.status(400).send({ type: "An error occurred while in login", message: err.message })
-    }
-
-}
 
 
