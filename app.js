@@ -6,6 +6,7 @@ import cors from "cors";
 const app=express()
 
 ////
+app
 
 app.use(express.json());
 app.use(cors({origin:"*",methods:"*"}))
