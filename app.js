@@ -1,10 +1,10 @@
-// import {config} from "dotenv"
+import {config} from "dotenv"
 import express  from "express";
 
 import userRouter from "./router/user.js"
 import cors from "cors";
 
-// config();
+ config();
 const app=express()
 
 
@@ -12,3 +12,14 @@ app.use(express.json());
 app.use(cors({origin:"*",methods:"*"}))
 
 app.use("/api/user",userRouter)
+
+const PORT=process.env.PORT||1000
+
+
+    app.listen(PORT,()=>{
+        console.log(`server running on port ${PORT}`);
+    })
+
+
+
+
